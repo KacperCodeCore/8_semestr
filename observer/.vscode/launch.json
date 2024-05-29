@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "C#: Observer",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}\\observer_code\\Observer\\Observer.csproj",
+            "launchConfigurationId": "TargetFramework=;Observer"
+        },
+        {
+            "name": "C#: FlyweightPattern",
+            "type": "dotnet",
+            "request": "launch",
+            "program": "${workspaceFolder}\\Main2.cs",
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+    
+}

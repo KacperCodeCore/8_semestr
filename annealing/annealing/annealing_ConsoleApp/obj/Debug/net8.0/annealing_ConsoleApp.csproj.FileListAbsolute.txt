@@ -1,0 +1,14 @@
+D:\GitHub\8_semestr\annealing\annealing\annealing_ConsoleApp\bin\Debug\net8.0\annealing_ConsoleApp.exe
+D:\GitHub\8_semestr\annealing\annealing\annealing_ConsoleApp\bin\Debug\net8.0\annealing_ConsoleApp.deps.json
+D:\GitHub\8_semestr\annealing\annealing\annealing_ConsoleApp\bin\Debug\net8.0\annealing_ConsoleApp.runtimeconfig.json
+D:\GitHub\8_semestr\annealing\annealing\annealing_ConsoleApp\bin\Debug\net8.0\annealing_ConsoleApp.dll
+D:\GitHub\8_semestr\annealing\annealing\annealing_ConsoleApp\bin\Debug\net8.0\annealing_ConsoleApp.pdb
+D:\GitHub\8_semestr\annealing\annealing\annealing_ConsoleApp\obj\Debug\net8.0\annealing_ConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub\8_semestr\annealing\annealing\annealing_ConsoleApp\obj\Debug\net8.0\annealing_ConsoleApp.AssemblyInfoInputs.cache
+D:\GitHub\8_semestr\annealing\annealing\annealing_ConsoleApp\obj\Debug\net8.0\annealing_ConsoleApp.AssemblyInfo.cs
+D:\GitHub\8_semestr\annealing\annealing\annealing_ConsoleApp\obj\Debug\net8.0\annealing_ConsoleApp.csproj.CoreCompileInputs.cache
+D:\GitHub\8_semestr\annealing\annealing\annealing_ConsoleApp\obj\Debug\net8.0\annealing_ConsoleApp.dll
+D:\GitHub\8_semestr\annealing\annealing\annealing_ConsoleApp\obj\Debug\net8.0\refint\annealing_ConsoleApp.dll
+D:\GitHub\8_semestr\annealing\annealing\annealing_ConsoleApp\obj\Debug\net8.0\annealing_ConsoleApp.pdb
+D:\GitHub\8_semestr\annealing\annealing\annealing_ConsoleApp\obj\Debug\net8.0\annealing_ConsoleApp.genruntimeconfig.cache
+D:\GitHub\8_semestr\annealing\annealing\annealing_ConsoleApp\obj\Debug\net8.0\ref\annealing_ConsoleApp.dll
