@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitHub\\8_semestr\\annealing\\annealing\\annealing_ConsoleApp\\annealing_ConsoleApp.csproj": {}
+    "D:\\GitHub\\8_semestr\\builderPattern\\observer_code\\Observer\\Observer.csproj": {}
   },
   "projects": {
-    "D:\\GitHub\\8_semestr\\annealing\\annealing\\annealing_ConsoleApp\\annealing_ConsoleApp.csproj": {
+    "D:\\GitHub\\8_semestr\\builderPattern\\observer_code\\Observer\\Observer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\8_semestr\\annealing\\annealing\\annealing_ConsoleApp\\annealing_ConsoleApp.csproj",
-        "projectName": "annealing_ConsoleApp",
-        "projectPath": "D:\\GitHub\\8_semestr\\annealing\\annealing\\annealing_ConsoleApp\\annealing_ConsoleApp.csproj",
+        "projectUniqueName": "D:\\GitHub\\8_semestr\\builderPattern\\observer_code\\Observer\\Observer.csproj",
+        "projectName": "Observer",
+        "projectPath": "D:\\GitHub\\8_semestr\\builderPattern\\observer_code\\Observer\\Observer.csproj",
         "packagesPath": "C:\\Users\\silyn\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\8_semestr\\annealing\\annealing\\annealing_ConsoleApp\\obj\\",
+        "outputPath": "D:\\GitHub\\8_semestr\\builderPattern\\observer_code\\Observer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
