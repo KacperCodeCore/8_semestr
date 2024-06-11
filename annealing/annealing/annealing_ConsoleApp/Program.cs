@@ -1,7 +1,7 @@
 ﻿// Brute Force #################################################################
 #region Brute Force
 const int N = 13; // number of object in the bag
-const int B = 50; // capacity of the bag
+const int B = 100; // capacity of the bag
 
 int[] values = new int[N];
 int[] weights = new int[N];
@@ -186,6 +186,9 @@ float coolingRate = 0.995f;
 
 int currentSolutionWeight = 0;
 int currentSolutionValue = 0;
+int prevValue = currentSolutionValue;
+int prevWeight = currentSolutionWeight;
+
 for (int i = 0; i < N; i++)
 {
     solution[i] = random.Next(0, 2);
@@ -196,41 +199,35 @@ for (int i = 0; i < N; i++)
 
 do
 {
-    int prevValue = currentSolutionValue;
-    int prevWeight = currentSolutionWeight;
-
     if (isValid3())
     {
-        if (currentSolutionValue > bestSolutionValue)
+        double delta = currentSolutionValue - prevValue;
+        double acceptanceProbability = Math.Exp(-delta / temperature);
+        double randomDouble = random.NextDouble();
+        if (randomDouble > acceptanceProbability && delta > 0)
         {
+            // Console.WriteLine($"delta:                 {delta}");
+            // Console.WriteLine($"acceptanceProbability: {acceptanceProbability}");
+            // Console.WriteLine($"randomDouble:          {random.NextDouble()}");
+            // Console.WriteLine($"temperature :          {temperature}");
+
             solutionValues.Add(currentSolutionValue);
             bestSolutionValue = currentSolutionValue;
             BestSolution = (int[])solution.Clone();
         }
-        else if (currentSolutionValue < prevValue)
+        else
         {
-            double acceptanceProbability = Math.Exp(-(currentSolutionValue - prevValue) / temperature);
-            Console.WriteLine($"acceptanceProbability: {acceptanceProbability}");
-            if (random.NextDouble() < acceptanceProbability)
-            {
-                solutionValues.Add(currentSolutionValue);
-                bestSolutionValue = currentSolutionValue;
-                BestSolution = (int[])solution.Clone();
-            }
-            else
-            {
-                currentSolutionValue = prevValue;
-                currentSolutionWeight = prevWeight;
-            }
+            currentSolutionValue = prevValue;
+            currentSolutionWeight = prevWeight;
         }
-        // else
-        // {
-        //     currentSolutionValue = prevValue;
-        //     currentSolutionWeight = prevWeight;
-        // }
+
+
         temperature *= coolingRate;
+
+        prevValue = currentSolutionValue;
+        prevWeight = currentSolutionWeight;
     }
-} while (Next3() && temperature > epsilon);
+} while (Next3());
 
 
 bool Next3()

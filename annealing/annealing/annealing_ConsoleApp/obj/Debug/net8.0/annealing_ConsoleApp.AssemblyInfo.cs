@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("annealing_ConsoleApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+edbc4a531c91b6ce6cce392f79978eec060ee217")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4eea00e6ee98364251967525d05ba04259f1197b")]
 [assembly: System.Reflection.AssemblyProductAttribute("annealing_ConsoleApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("annealing_ConsoleApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
