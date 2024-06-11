@@ -12,3 +12,4 @@ D:\GitHub\8_semestr\annealing\annealing\annealing_ConsoleApp\obj\Debug\net8.0\re
 D:\GitHub\8_semestr\annealing\annealing\annealing_ConsoleApp\obj\Debug\net8.0\annealing_ConsoleApp.pdb
 D:\GitHub\8_semestr\annealing\annealing\annealing_ConsoleApp\obj\Debug\net8.0\annealing_ConsoleApp.genruntimeconfig.cache
 D:\GitHub\8_semestr\annealing\annealing\annealing_ConsoleApp\obj\Debug\net8.0\ref\annealing_ConsoleApp.dll
+D:\GitHub\8_semestr\annealing\annealing\annealing_ConsoleApp\obj\Debug\net8.0\annealing_ConsoleApp.sourcelink.json

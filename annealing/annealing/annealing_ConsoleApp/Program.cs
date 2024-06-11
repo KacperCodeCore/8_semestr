@@ -223,11 +223,11 @@ do
                 currentSolutionWeight = prevWeight;
             }
         }
-        else
-        {
-            currentSolutionValue = prevValue;
-            currentSolutionWeight = prevWeight;
-        }
+        // else
+        // {
+        //     currentSolutionValue = prevValue;
+        //     currentSolutionWeight = prevWeight;
+        // }
         temperature *= coolingRate;
     }
 } while (Next3() && temperature > epsilon);
