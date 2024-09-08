@@ -1,0 +1,15 @@
+D:\GitHub\8_semestr_experiment_repo\Chain_of_Responsibility\Chain_of_Responsibility\bin\Debug\net8.0\Chain_of_Responsibility.exe
+D:\GitHub\8_semestr_experiment_repo\Chain_of_Responsibility\Chain_of_Responsibility\bin\Debug\net8.0\Chain_of_Responsibility.deps.json
+D:\GitHub\8_semestr_experiment_repo\Chain_of_Responsibility\Chain_of_Responsibility\bin\Debug\net8.0\Chain_of_Responsibility.runtimeconfig.json
+D:\GitHub\8_semestr_experiment_repo\Chain_of_Responsibility\Chain_of_Responsibility\bin\Debug\net8.0\Chain_of_Responsibility.dll
+D:\GitHub\8_semestr_experiment_repo\Chain_of_Responsibility\Chain_of_Responsibility\bin\Debug\net8.0\Chain_of_Responsibility.pdb
+D:\GitHub\8_semestr_experiment_repo\Chain_of_Responsibility\Chain_of_Responsibility\obj\Debug\net8.0\Chain_of_Responsibility.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub\8_semestr_experiment_repo\Chain_of_Responsibility\Chain_of_Responsibility\obj\Debug\net8.0\Chain_of_Responsibility.AssemblyInfoInputs.cache
+D:\GitHub\8_semestr_experiment_repo\Chain_of_Responsibility\Chain_of_Responsibility\obj\Debug\net8.0\Chain_of_Responsibility.AssemblyInfo.cs
+D:\GitHub\8_semestr_experiment_repo\Chain_of_Responsibility\Chain_of_Responsibility\obj\Debug\net8.0\Chain_of_Responsibility.csproj.CoreCompileInputs.cache
+D:\GitHub\8_semestr_experiment_repo\Chain_of_Responsibility\Chain_of_Responsibility\obj\Debug\net8.0\Chain_of_Responsibility.sourcelink.json
+D:\GitHub\8_semestr_experiment_repo\Chain_of_Responsibility\Chain_of_Responsibility\obj\Debug\net8.0\Chain_of_Responsibility.dll
+D:\GitHub\8_semestr_experiment_repo\Chain_of_Responsibility\Chain_of_Responsibility\obj\Debug\net8.0\refint\Chain_of_Responsibility.dll
+D:\GitHub\8_semestr_experiment_repo\Chain_of_Responsibility\Chain_of_Responsibility\obj\Debug\net8.0\Chain_of_Responsibility.pdb
+D:\GitHub\8_semestr_experiment_repo\Chain_of_Responsibility\Chain_of_Responsibility\obj\Debug\net8.0\Chain_of_Responsibility.genruntimeconfig.cache
+D:\GitHub\8_semestr_experiment_repo\Chain_of_Responsibility\Chain_of_Responsibility\obj\Debug\net8.0\ref\Chain_of_Responsibility.dll
