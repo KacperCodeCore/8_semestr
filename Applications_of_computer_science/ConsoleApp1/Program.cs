@@ -7,6 +7,8 @@ const int BagWeight = 100; // capacity of the bag
 
 Stopwatch stopwatch = new Stopwatch();
 stopwatch.Start();
+int timer1 = (int)stopwatch.ElapsedMilliseconds;
+int timer2;
 int[] values = new int[N];
 int[] weights = new int[N];
 int[] solution = new int[N];
@@ -89,12 +91,14 @@ int SolutionValue()
     return totalValue;
 }
 stopwatch.Stop();
+timer2 = (int)stopwatch.ElapsedMilliseconds;
 Console.WriteLine("\n###################### Completed");
 foreach (int s in solutionValues) { Console.Write($"{s} "); }
 Console.WriteLine();
 Console.WriteLine($"Best: {bestSolutionValue}");
 Console.WriteLine($"Iteration: {currIteration}");
-Console.WriteLine($"Time: {stopwatch.ElapsedMilliseconds} ms\n");
+Console.WriteLine($"Time: {timer2 - timer1} ms\n");
+stopwatch.Reset();
 #endregion Brute Force
 
 
@@ -222,6 +226,7 @@ for (int i = 0; i < N; i++)
 }
 
 stopwatch.Start();
+timer1 = (int)stopwatch.ElapsedMilliseconds;
 do
 {
     currIteration++;
@@ -288,12 +293,14 @@ bool Next3()
 bool isValid3() => currentSolutionWeight <= BagWeight;
 
 stopwatch.Stop();
+timer2 = (int)stopwatch.ElapsedMilliseconds;
 Console.WriteLine("###################### Simulated annealing");
 foreach (int s in solutionValues) { Console.Write($"{s} "); }
 Console.WriteLine();
 Console.WriteLine($"Best: {bestValue}");
 Console.WriteLine($"Iterations: {currIteration}");
-Console.WriteLine($"Time: {stopwatch.ElapsedMilliseconds} ms\n");
+Console.WriteLine($"Time: {timer2 - timer1} ms\n");
+stopwatch.Reset();
 #endregion
 
 
@@ -323,6 +330,7 @@ for (int i = 0; i < N; i++)
 
 
 stopwatch.Start();
+timer1 = (int)stopwatch.ElapsedMilliseconds;
 BB();
 
 void PrintAB(String sign)
@@ -431,9 +439,12 @@ void BB()
 }
 
 stopwatch.Stop();
+timer2 = (int)stopwatch.ElapsedMilliseconds;
+
 Console.Write($"\nIterations: {currIteration}");
 Console.WriteLine($"\nBest: {bestSolutionValue}");
-Console.WriteLine($"Time: {stopwatch.ElapsedMilliseconds} ms\n");
+Console.WriteLine($"Time: {timer2 - timer1} ms\n");
+stopwatch.Reset();
 #endregion
 
 
