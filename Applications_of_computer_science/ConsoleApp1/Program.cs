@@ -1,11 +1,14 @@
 ﻿// Brute Force #################################################################
 #region Brute Force
-const int N = 7; // number of object in the bag
+using System.Diagnostics;
+
+const int N = 15; // number of object in the bag
 const int BagWeight = 100; // capacity of the bag
 
+Stopwatch stopwatch = new Stopwatch();
+stopwatch.Start();
 int[] values = new int[N];
 int[] weights = new int[N];
-
 int[] solution = new int[N];
 
 Random random = new Random();
@@ -19,6 +22,8 @@ int currIteration = 0;
 Console.WriteLine("Values:");
 for (int i = 0; i < N; i++) { values[i] = random.Next(1, BagWeight); Console.Write($"{values[i],2} "); }
 Console.WriteLine();
+
+int[] solutionClone = (int[])solution.Clone();
 
 Console.WriteLine("Weights:");
 for (int i = 0; i < N; i++) { weights[i] = random.Next(1, BagWeight); Console.Write($"{weights[i],2} "); }
@@ -40,9 +45,6 @@ do
     }
 } while (Next());
 
-// Console.WriteLine("Start Bits:");
-// for (int i = 0; i < N; i++) { Console.Write($"{BestSolution[i],2} "); }
-// Console.WriteLine();
 
 bool Next()
 {
@@ -86,20 +88,21 @@ int SolutionValue()
 
     return totalValue;
 }
-
+stopwatch.Stop();
 Console.WriteLine("\n###################### Completed");
 foreach (int s in solutionValues) { Console.Write($"{s} "); }
 Console.WriteLine();
 Console.WriteLine($"Best: {bestSolutionValue}");
-Console.WriteLine($"Iteration: {currIteration}\n");
+Console.WriteLine($"Iteration: {currIteration}");
+Console.WriteLine($"Time: {stopwatch.ElapsedMilliseconds} ms\n");
 #endregion Brute Force
 
 
 
 
 
-// // Random Selection #################################################################
-// #region Random Selection
+// Random Selection #################################################################
+#region Random Selection
 // bestSolutionValue = int.MinValue;
 // solutionValues.Clear();
 // currIteration = 0;
@@ -187,7 +190,7 @@ Console.WriteLine($"Iteration: {currIteration}\n");
 
 //     return totalValue;
 // }
-// #endregion Random Selection
+#endregion
 
 
 
@@ -203,7 +206,7 @@ float temperature = 1100;
 float epsilon = 0.01f;
 float coolingRate = 0.995f;
 
-
+int bestValue = 0;
 int currentSolutionWeight = 0;
 int currentSolutionValue = 0;
 int prevValue = currentSolutionValue;
@@ -218,6 +221,7 @@ for (int i = 0; i < N; i++)
     currentSolutionWeight += weights[i] * solution[i];
 }
 
+stopwatch.Start();
 do
 {
     currIteration++;
@@ -236,24 +240,15 @@ do
             prevWeight = currentSolutionWeight;
 
             solutionValues.Add(currentSolutionValue);
+            bestValue = currentSolutionValue;
         }
         else
         {
             solution = (int[])prevSolution.Clone();
             currentSolutionValue = prevValue;
             currentSolutionWeight = prevWeight;
-
-            // solutionValues.Add(prevValue);
-
-            // currentSolutionValue = prevValue;
-            // currentSolutionWeight = prevWeight;
         }
-
-
-
         temperature *= coolingRate;
-
-
     }
 } while (Next3() && temperature > epsilon);
 
@@ -292,12 +287,13 @@ bool Next3()
 
 bool isValid3() => currentSolutionWeight <= BagWeight;
 
+stopwatch.Stop();
 Console.WriteLine("###################### Simulated annealing");
 foreach (int s in solutionValues) { Console.Write($"{s} "); }
 Console.WriteLine();
-Console.WriteLine($"Best: {solutionValues.Last()}");
-Console.WriteLine($"Iterations: {currIteration}\n");
-
+Console.WriteLine($"Best: {bestValue}");
+Console.WriteLine($"Iterations: {currIteration}");
+Console.WriteLine($"Time: {stopwatch.ElapsedMilliseconds} ms\n");
 #endregion
 
 
@@ -326,7 +322,7 @@ for (int i = 0; i < N; i++)
 }
 
 
-
+stopwatch.Start();
 BB();
 
 void PrintAB(String sign)
@@ -396,9 +392,8 @@ bool Oracle()
 
 void BB()
 {
-    PrintAB("");
+    // PrintAB("");
     currIteration++;
-    // // PrintAB();
     if (B.Count == 0)
     {
         Console.Write($"\nbestSolutionValue: {bestSolutionValue}");
@@ -431,17 +426,14 @@ void BB()
             A.RemoveAt(A.Count - 1);
             B.Add(x);
             BagPacking(x);
-            // PrintAB("-");
-
-
-
-            // timeOut--;
-            // if(timeOut <= 0){break;}
         }
     }
 }
+
+stopwatch.Stop();
 Console.Write($"\nIterations: {currIteration}");
-Console.WriteLine($"\nBest: {bestSolutionValue}\n");
+Console.WriteLine($"\nBest: {bestSolutionValue}");
+Console.WriteLine($"Time: {stopwatch.ElapsedMilliseconds} ms\n");
 #endregion
 
 
@@ -449,17 +441,23 @@ Console.WriteLine($"\nBest: {bestSolutionValue}\n");
 
 
 
-// Genetic Algorithm #################################################################
+// Genetic Algorithm for Knapsack Problem #################################################################
 #region Genetic Algorithm
 Console.Write("###################### Genetic Algorithm");
 
+currIteration = 0;
+currentSolutionWeight = 0;
+currentSolutionValue = 0;
+bestSolutionValue = 0;
+solutionValues.Clear();
 
 
-
+ProgramGeneticAlgorithm.values = (int[])values.Clone();
+ProgramGeneticAlgorithm.weights = (int[])weights.Clone();
+ProgramGeneticAlgorithm.solution = (int[])solutionClone.Clone();
+ProgramGeneticAlgorithm.N = N;
+ProgramGeneticAlgorithm.BagWeight = BagWeight;
+ProgramGeneticAlgorithm.stopwatch = stopwatch;
+ProgramGeneticAlgorithm.Calculate();
 #endregion
-
-
-
-
-
 
