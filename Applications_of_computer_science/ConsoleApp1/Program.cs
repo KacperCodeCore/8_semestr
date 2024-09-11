@@ -90,7 +90,7 @@ int SolutionValue()
 
     return totalValue;
 }
-stopwatch.Stop();
+
 timer2 = (int)stopwatch.ElapsedMilliseconds;
 Console.WriteLine("\n###################### Completed");
 foreach (int s in solutionValues) { Console.Write($"{s} "); }
@@ -98,103 +98,9 @@ Console.WriteLine();
 Console.WriteLine($"Best: {bestSolutionValue}");
 Console.WriteLine($"Iteration: {currIteration}");
 Console.WriteLine($"Time: {timer2 - timer1} ms\n");
-stopwatch.Reset();
+
 #endregion Brute Force
 
-
-
-
-
-// Random Selection #################################################################
-#region Random Selection
-// bestSolutionValue = int.MinValue;
-// solutionValues.Clear();
-// currIteration = 0;
-// int currentSolutionWeight = 0;
-// int currentSolutionValue = 0;
-
-// for (int i = 0; i < N; i++)
-// {
-//     solution[i] = 0;
-// }
-
-// do
-// {
-//     currIteration++;
-//     if (IsValid2())
-//     {
-//         var solutionValue = SolutionValue2();
-//         if (solutionValue > bestSolutionValue)
-//         {
-//             solutionValues.Add(solutionValue);
-//             bestSolutionValue = solutionValue;
-//             BestSolution = (int[])solution.Clone();
-//         }
-//     }
-// } while (Next2());
-
-// Console.WriteLine("###################### Random");
-// Console.WriteLine($"Solution Values: {solutionValues.Count}");
-// foreach (int s in solutionValues) { Console.Write($"{s} "); }
-// Console.WriteLine();
-// Console.WriteLine($"Best: {bestSolutionValue}");
-
-// bool Next2()
-// {
-//     // int bit = 0;
-//     // while (true)
-//     // {
-//     //     if (solution[bit] == 0)
-//     //     {
-//     //         solution[bit] = 1;
-//     //         break;
-//     //     }
-//     //     else
-//     //     {
-//     //         solution[bit] = 0;
-//     //         bit++;
-//     //         if (bit == N) { return false; }
-//     //     }
-//     // }
-//     var bit = random.Next(N);
-//     if (solution[bit] == 1)
-//     {
-//         solution[bit] = 0;
-//         currentSolutionValue -= values[bit];
-//         currentSolutionWeight -= weights[bit];
-//     }
-//     else
-//     {
-//         solution[bit] = 1;
-//         currentSolutionValue += values[bit];
-//         currentSolutionWeight += weights[bit];
-//     }
-
-//     return true;
-// }
-
-// bool IsValid2()
-// {
-//     int totalWeigh = 0;
-//     for (int i = 0; i < N; i++)
-//     {
-//         totalWeigh += weights[i] * solution[i];
-//     }
-
-//     return totalWeigh <= B;
-// }
-
-// int SolutionValue2()
-// {
-//     int totalValue = 0;
-//     for (int i = 0; i < N; i++)
-//     {
-//         totalValue += values[i] * solution[i];
-//     }
-
-//     return totalValue;
-// }
-#endregion
 
 
 
@@ -225,7 +131,7 @@ for (int i = 0; i < N; i++)
     currentSolutionWeight += weights[i] * solution[i];
 }
 
-stopwatch.Start();
+
 timer1 = (int)stopwatch.ElapsedMilliseconds;
 do
 {
@@ -292,7 +198,7 @@ bool Next3()
 
 bool isValid3() => currentSolutionWeight <= BagWeight;
 
-stopwatch.Stop();
+
 timer2 = (int)stopwatch.ElapsedMilliseconds;
 Console.WriteLine("###################### Simulated annealing");
 foreach (int s in solutionValues) { Console.Write($"{s} "); }
@@ -300,7 +206,6 @@ Console.WriteLine();
 Console.WriteLine($"Best: {bestValue}");
 Console.WriteLine($"Iterations: {currIteration}");
 Console.WriteLine($"Time: {timer2 - timer1} ms\n");
-stopwatch.Reset();
 #endregion
 
 
@@ -329,7 +234,7 @@ for (int i = 0; i < N; i++)
 }
 
 
-stopwatch.Start();
+
 timer1 = (int)stopwatch.ElapsedMilliseconds;
 BB();
 
@@ -438,13 +343,12 @@ void BB()
     }
 }
 
-stopwatch.Stop();
+
 timer2 = (int)stopwatch.ElapsedMilliseconds;
 
 Console.Write($"\nIterations: {currIteration}");
 Console.WriteLine($"\nBest: {bestSolutionValue}");
 Console.WriteLine($"Time: {timer2 - timer1} ms\n");
-stopwatch.Reset();
 #endregion
 
 
@@ -470,5 +374,187 @@ ProgramGeneticAlgorithm.N = N;
 ProgramGeneticAlgorithm.BagWeight = BagWeight;
 ProgramGeneticAlgorithm.stopwatch = stopwatch;
 ProgramGeneticAlgorithm.Calculate();
-#endregion
 
+static class ProgramGeneticAlgorithm
+{
+    public static Population population;
+    public static int[] values;
+    public static int[] weights;
+    public static int[] solution;
+    public static int N;
+    public static int BagWeight;
+    public static int Iteration = 200;
+    public static Stopwatch stopwatch;
+
+
+    public static void Calculate()
+    {
+        int timer1;
+        int timer2;
+        timer1 = (int)stopwatch.ElapsedMilliseconds;
+        population = new Population(20, N);
+
+        for (int i = 0; i < 200; i++)
+        {
+            population.Evolution();
+        }
+
+
+        timer2 = (int)stopwatch.ElapsedMilliseconds;
+        Console.WriteLine($"\nIteration: {Iteration}");
+        Console.WriteLine($"Best: {population.population[0].Value}");
+        Console.WriteLine($"Time: {timer2 - timer1} ms\n");
+    }
+}
+
+class Population
+{
+    public Individual[] population;
+
+    private Individual[] _nextGeneration;
+    private double[] _normValues;
+
+    private readonly Random _rnd = new();
+    private readonly Random _rnd2 = new();
+
+
+    public Population(int size, int numberOfItems)
+    {
+        population = new Individual[size];
+        _nextGeneration = new Individual[size];
+
+        // Generate random individuals (solutions)
+        for (int i = 0; i < population.Length; i++)
+        {
+            population[i] = new Individual(_rnd, numberOfItems);
+        }
+
+        _normValues = new double[population.Length];
+    }
+
+    public void Evolution()
+    {
+        Array.Sort(population, (a, b) => b.Value.CompareTo(a.Value));
+
+        // fitness array for roulette wheel selection
+        for (int i = 0; i < population.Length; i++)
+        {
+            _normValues[i] = (i == 0) ? population[i].Value : _normValues[i - 1] + population[i].Value;
+
+        }
+
+        double sum = _normValues[^1];
+        _normValues = Array.ConvertAll(_normValues, x => x / sum);  // Normalize the cumulative values
+        _normValues[^1] = 1.0;  // Ensure the last value is exactly 1.0
+
+        // Copy the best individuals directly to the next generation
+        for (int i = 0; i < 5; i++)
+        {
+            _nextGeneration[i] = population[i].Clone();
+        }
+
+        // Perform crossover to create new individuals
+        for (int i = 5; i < _nextGeneration.Length; i++)
+        {
+            _nextGeneration[i] = Individual.Crossover(population[Sample()], population[Sample()]);
+        }
+
+        // Apply mutation to the new individuals
+        for (int i = 1; i < _nextGeneration.Length; i++)
+        {
+            _nextGeneration[i].Mutation(0.1f);
+        }
+
+        // Replace the old population with the new one
+        (population, _nextGeneration) = (_nextGeneration, population);
+    }
+
+    // Sample method: Select individuals using roulette wheel selection
+    private int Sample()
+    {
+        double probability = _rnd2.NextDouble();
+        int index = Array.BinarySearch(_normValues, probability);
+        return (index < 0) ? ~index : index;
+    }
+}
+
+
+public class Individual
+{
+    public int[] Solution;
+    public int Value;
+    public int Weight;
+
+    private readonly Random _rnd;
+
+    public Individual(Random rnd, int numberOfItems)
+    {
+        _rnd = rnd;
+        Solution = new int[numberOfItems];
+
+        for (int i = 0; i < Solution.Length; i++)
+        {
+            Solution[i] = _rnd.Next(2);
+        }
+
+        UpdateValueAndWeight();
+    }
+
+    public Individual Clone()
+    {
+        return new Individual(_rnd, Solution.Length)
+        {
+            Solution = (int[])Solution.Clone(),
+            Value = Value,
+            Weight = Weight
+        };
+    }
+
+    public void Mutation(float mutationRate)
+    {
+        if (_rnd.NextDouble() < mutationRate)
+        {
+            int index = _rnd.Next(Solution.Length);
+            Solution[index] = 1 - Solution[index];  // Flip the selected bit
+            UpdateValueAndWeight();
+        }
+
+    }
+
+    public static Individual Crossover(Individual parent1, Individual parent2)
+    {
+        var solution = new int[parent1.Solution.Length];
+
+        // Randomly choose genes from either parent
+        for (int i = 0; i < solution.Length; i++)
+        {
+            solution[i] = parent1._rnd.Next(2) == 0 ? parent1.Solution[i] : parent2.Solution[i];
+        }
+
+        // Return a new individual with the combined solution
+        return new Individual(parent1._rnd, parent1.Solution.Length)
+        {
+            Solution = solution
+        };
+    }
+
+    private void UpdateValueAndWeight()
+    {
+        Value = 0;
+        Weight = 0;
+        for (int i = 0; i < Solution.Length; i++)
+        {
+            if (Solution[i] == 1)
+            {
+                Value += ProgramGeneticAlgorithm.values[i];
+                Weight += ProgramGeneticAlgorithm.weights[i];
+            }
+        }
+
+        if (Weight > ProgramGeneticAlgorithm.BagWeight)
+        {
+            Value = 0;
+        }
+    }
+}
+#endregion
